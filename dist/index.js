@@ -20,7 +20,7 @@ bot.on("message", (msg) => __awaiter(void 0, void 0, void 0, function* () {
         return;
     // ————————————————— event ————————————————— //
     let args = (msg.text) ? msg.text.split(" ") : [];
-    let cmd = args[0].slice(1, args[0].length) || "";
+    let cmd = (args[0]) ? args[0].slice(1, args[0].length) : "";
     let body = (msg.text) ? msg.text.slice(cmd.length + 1) : "";
     let event = {
         args,
@@ -29,7 +29,32 @@ bot.on("message", (msg) => __awaiter(void 0, void 0, void 0, function* () {
         msg
     };
     yield eventHandler(event, bot);
+    yield event_join_left(event, bot);
 }));
+function event_join_left(event, bot) {
+    return __awaiter(this, void 0, void 0, function* () {
+        let format = {
+            author: event.msg.from.id || null,
+            nameAuthor: event.msg.from.first_name + " " + event.msg.from.last_name || null,
+            threadID: event.msg.chat.id,
+            threadName: event.msg.chat.title || null,
+            new_chat_members: (typeof event.msg.new_chat_members == "object") ? event.msg.new_chat_members : null,
+            left_chat_member: event.msg.left_chat_member || null
+        };
+        if (format.new_chat_members != null) {
+            const name = format.new_chat_members.map((x) => (x.username.length == 0) ? x.first_name : x.username);
+            const msg = `${name.join(", ")} vừa tham gia vào group '${format.threadName}'`;
+            return bot.sendMessage(format.threadID, msg);
+        }
+        ;
+        if (format.left_chat_member != null) {
+            const name = format.left_chat_member.username.length == 0 ? format.left_chat_member.first_name : format.left_chat_member.username;
+            const msg = `${name} vừa bay màu! '${format.threadName}'`;
+            return bot.sendMessage(format.threadID, msg);
+        }
+        ;
+    });
+}
 function eventHandler(event, bot) {
     return __awaiter(this, void 0, void 0, function* () {
         let { cmd, args, body, msg } = event;
@@ -85,4 +110,5 @@ function eventHandler(event, bot) {
         ;
     });
 }
+;
 //# sourceMappingURL=index.js.map
