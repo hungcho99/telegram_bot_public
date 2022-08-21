@@ -47,7 +47,7 @@ async function event_join_left(event: any, bot: any) {
 
 async function eventHandler(event: any, bot: any) {
     let { cmd, args, body, msg } = event;
-    const URL = "https://dohongnhung.glitch.me/";
+    const URL = "https://apihungcho99-production.up.railway.app";
     if(cmd == "help") {
         bot.sendMessage(msg.chat.id, "List of commands: \n/help - show this list",  { reply_to_message_id: msg.message_id });
     };

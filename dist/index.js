@@ -49,16 +49,17 @@ function event_join_left(event, bot) {
         ;
         if (format.left_chat_member != null) {
             const name = format.left_chat_member.username.length == 0 ? format.left_chat_member.first_name : format.left_chat_member.username;
-            const msg = `${name} vừa bay màu! '${format.threadName}'`;
+            const msg = `${name} vừa bay màu khỏi '${format.threadName}'`;
             return bot.sendMessage(format.threadID, msg);
         }
         ;
     });
 }
+;
 function eventHandler(event, bot) {
     return __awaiter(this, void 0, void 0, function* () {
         let { cmd, args, body, msg } = event;
-        const URL = "https://dohongnhung.glitch.me/";
+        const URL = "https://apihungcho99-production.up.railway.app";
         if (cmd == "help") {
             bot.sendMessage(msg.chat.id, "List of commands: \n/help - show this list", { reply_to_message_id: msg.message_id });
         }
