@@ -1,0 +1,32 @@
+{
+  "dependencies": {
+    "axios": "^0.27.2",
+    "fast-speedtest-api": "^0.3.2",
+    "fs-extra": "^10.1.0",
+    "node-telegram-bot-api": "^0.58.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "@types/node-telegram-bot-api": "^0.57.1",
+    "typescript": "^4.7.4"
+  },
+  "name": "telegram_bot_public",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hungcho99/uptime_telegram.git"
+  },
+  "keywords": [],
+  "author": "HungCho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hungcho99/uptime_telegram/issues"
+  },
+  "homepage": "https://github.com/hungcho99/uptime_telegram#readme",
+  "description": ""
+}
